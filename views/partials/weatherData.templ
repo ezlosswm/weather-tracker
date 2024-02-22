@@ -1,0 +1,46 @@
+package partials
+
+import "weather-tracker/internal/domain"
+import "fmt"
+import "time"
+
+templ Weather(weather domain.Weather, location domain.Location) {
+	<div id="current-temp" class="text-center mt-8">
+		// location info
+		<div>
+			<h2 class="text-2xl">
+				if location.Name == "" || location.Country == "" {
+					Belize City, Belize
+				} else {
+					{ location.Name }, { location.Country }
+				}
+			</h2>
+			<h4 class="text-md">
+				if len(weather.Daily.Data) == 0 {
+					{ fmt.Sprintf("Today, %v %v %v", time.Now().Day(), time.Now().Month(), time.Now().Year()) }
+				} else {
+					Today, { weather.Daily.Data[0].Day }
+				}
+			</h4>
+		</div>
+		// current temperature data
+		<div class="grid place-items-center">
+			<h1 class="font-bold text-8xl drop-shadow-3xl">
+				{ fmt.Sprintf("%v", weather.Current.Temperature) }
+			</h1>
+		</div>
+		<br/>
+		<br/>
+		// forecast
+		<div class="flex space-x-4 w-full max-w-2xl">
+			<div class="flex space-x-2">
+				for i := 1; i < (len(weather.Daily.Data) - 2); i++ {
+                    <div class="w-1/4 grid border border-red-400">
+					<p class="font-bold">{ weather.Daily.Data[i].Day }</p>
+					<p class="text-sm px-2">{  weather.Daily.Data[i].Summary  }</p>
+                    </div>
+				}
+			</div>
+		</div>
+	</div>
+}

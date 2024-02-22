@@ -1,0 +1,12 @@
+package views 
+
+import "weather-tracker/views/shared"
+import "weather-tracker/views/partials"
+import "weather-tracker/internal/domain"
+
+templ Home(weather domain.Weather, location domain.Location, locations []domain.Location ) {
+	@shared.Layout() {
+		@partials.SearchBox(locations)
+		@partials.Weather(weather, location)
+	}
+}
