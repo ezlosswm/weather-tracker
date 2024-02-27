@@ -22,6 +22,7 @@ func (s *Server) RegisterRoutes() http.Handler {
 
 func (s *Server) handler(w http.ResponseWriter, r *http.Request) {
 	var location domain.Location
+
 	// default values
 	placeID := "belize-city"
 	weather, err := repository.FetchWeather(placeID)

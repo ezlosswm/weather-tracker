@@ -102,19 +102,19 @@ func Weather(weather domain.Weather, location domain.Location) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h1></div><br><br><div class=\"flex space-x-4 w-full max-w-2xl\"><div class=\"flex space-x-2\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" &deg;F</h1></div><br><br><div class=\"flex space-x-4 w-full max-w-2xl\"><div class=\"flex space-x-2\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		for i := 1; i < (len(weather.Daily.Data) - 2); i++ {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"w-1/4 grid border border-red-400\"><p class=\"font-bold\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"w-1/4 grid border-l border-r border-slate-200\"><p class=\"font-bold\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var7 string
 			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(weather.Daily.Data[i].Day)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/partials/weatherData.templ`, Line: 38, Col: 53}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/partials/weatherData.templ`, Line: 38, Col: 54}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 			if templ_7745c5c3_Err != nil {
@@ -127,7 +127,7 @@ func Weather(weather domain.Weather, location domain.Location) templ.Component {
 			var templ_7745c5c3_Var8 string
 			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(weather.Daily.Data[i].Summary)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/partials/weatherData.templ`, Line: 39, Col: 62}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/partials/weatherData.templ`, Line: 39, Col: 63}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 			if templ_7745c5c3_Err != nil {

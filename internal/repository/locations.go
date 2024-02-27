@@ -56,14 +56,13 @@ func FetchWeather(input string) (domain.Weather, error) {
 		weather domain.Weather
 		query   = fmt.Sprintf("point?place_id=%s&", input)
 		key     = fmt.Sprintf("key=%s", API_KEY)
-		etc     = "sections=current%2Cdaily&language=en&units=auto&"
+		etc     = "sections=current%2Cdaily&language=en&units=us&"
 	)
 
 	// https://www.meteosource.com/api/v1/free/point?place_id=belize-city&sections=current%2Chourly&language=en&units=auto&key=woxhy321n51o3k8zjt0d0kwsco7rqvyb30hohst3
 	// https://www.meteosource.com/api/v1/free/point?place_id=belize-city&sections=current%2Cdaily&language=en&units=auto&key=woxhy321n51o3k8zjt0d0kwsco7rqvyb30hohst3
 
 	URL := BASE_URL + query + etc + key
-	log.Println(URL)
 	req, _ := http.NewRequest(http.MethodGet, URL, nil)
 
 	response, err := http.DefaultClient.Do(req)
@@ -78,7 +77,8 @@ func FetchWeather(input string) (domain.Weather, error) {
 
 	// unmarshal response
 	if err := json.Unmarshal(weatherResp, &weather); err != nil {
-		return weather, err
+		var w domain.Weather
+		return w, err
 	}
 
 	return weather, nil
