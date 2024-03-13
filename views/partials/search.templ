@@ -20,9 +20,9 @@ templ SearchBox(locations []domain.Location) {
 }
 
 templ Results(locations []domain.Location) {
-	<ul class="z-20">
+	<ul class="z-20" x-data="{open: true}">
 		for _, location := range locations {
-			<li class="my-2 cursor-pointer">
+			<li class="my-2 cursor-pointer" x-on:click="open = !open" x-show="open" x-transition>
 				<a class="p-2" hx-push-url="true" hx-target="#current-temp" hx-swap="innerHTML" hx-post={ fmt.Sprintf("/find/%s", location.PlaceID) }>
 					{ location.Name }, { location.Country }
 				</a>

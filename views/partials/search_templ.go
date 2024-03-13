@@ -58,12 +58,12 @@ func Results(locations []domain.Location) templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<ul class=\"z-20\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<ul class=\"z-20\" x-data=\"{open: true}\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		for _, location := range locations {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li class=\"my-2 cursor-pointer\"><a class=\"p-2\" hx-push-url=\"true\" hx-target=\"#current-temp\" hx-swap=\"innerHTML\" hx-post=\"")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li class=\"my-2 cursor-pointer\" x-on:click=\"open = !open\" x-show=\"open\" x-transition><a class=\"p-2\" hx-push-url=\"true\" hx-target=\"#current-temp\" hx-swap=\"innerHTML\" hx-post=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"log"
 	"net/http"
 	"os"
 	"weather-tracker/internal/domain"
@@ -58,9 +57,6 @@ func FetchWeather(input string) (domain.Weather, error) {
 		key     = fmt.Sprintf("key=%s", API_KEY)
 		etc     = "sections=current%2Cdaily&language=en&units=us&"
 	)
-
-	// https://www.meteosource.com/api/v1/free/point?place_id=belize-city&sections=current%2Chourly&language=en&units=auto&key=woxhy321n51o3k8zjt0d0kwsco7rqvyb30hohst3
-	// https://www.meteosource.com/api/v1/free/point?place_id=belize-city&sections=current%2Cdaily&language=en&units=auto&key=woxhy321n51o3k8zjt0d0kwsco7rqvyb30hohst3
 
 	URL := BASE_URL + query + etc + key
 	req, _ := http.NewRequest(http.MethodGet, URL, nil)

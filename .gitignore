@@ -18,7 +18,11 @@
 go.work
 tmp/
 Dockerfile
+node_modules/
 
 # IDE specific files
 .vscode
 .idea
+
+# Environment variables
+.env

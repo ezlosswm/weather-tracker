@@ -1,10 +1,28 @@
-# Project weather-tracker
+# Weather Tracker App
 
-One Paragraph of project description goes here
+A weather tracker application made with Go, Templ, HTMX and AlpineJS. The application uses the www.meteosource.com public API to generate the weather data for a given city. 
+
+## Features 
+- Search box
+- 5 day weather forecast
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+### Installation 
+
+
+### Usage
+```Shell
+cp .env.example .env
+# populate the API_KEY with your own
+
+# using make 
+make run
+
+# using Go 
+go run ./cmd/api/main.go
+```
+
 
 ## MakeFile
 
